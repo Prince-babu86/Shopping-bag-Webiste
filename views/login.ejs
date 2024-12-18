@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Sign Up</title>
+    <link rel="stylesheet" href="/stylesheets/login.css">
+</head>
+<body>
+
+
+   
+
+    <div class="container">
+        <!-- Login Section -->
+        <div class="section login-section">
+            <h2>Login</h2>
+            <form method="post" action="/users/login">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input name="email" type="email" id="login-email" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input name="password" type="password" id="login-password" placeholder="Enter your password">
+                </div>
+                <button type="submit" class="btn">Login</button>
+            </form>
+        </div>
+
+        <!-- Signup Section -->
+        <div class="section signup-section">
+            <h2>Sign Up</h2>
+            <form method="post" action="/users/register">
+                <div class="form-group">
+                    <label for="signup-name">Name</label>
+                    <input name="fullname" type="text" id="signup-name" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input name="email" type="email" id="signup-email" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input name="password" type="password" id="signup-password" placeholder="Create a password">
+                </div>
+                <button type="submit" class="btn">Sign Up</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
