@@ -1,5 +1,6 @@
 const express = require('express')
 const isLoggedin = require('../middlewares/isLoggedin')
+const userModel = require('../models/user.model')
 const router = express.Router()
 
 
@@ -8,8 +9,10 @@ router.get('/' ,  function(req , res){
    res.render("login" , {error})
 })
 
-router.get('/shop' , isLoggedin , function(req,res){
-   res.send(req.user.fullname)
+router.get('/shop' , isLoggedin ,async function(req,res){
+   let user = await userModel.findOne({email:req.user.email})
+   res.render('Home' , {user})
+   console.log(user)
 })
 
 module.exports = router

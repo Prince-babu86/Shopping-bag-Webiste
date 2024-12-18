@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Product Page</title>
+    <link rel="stylesheet" href="/stylesheets/Home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="nav-list">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="shop-container">
+         
+        <!-- Left Sidebar -->
+        <div class="left-bar">
+            <h4 id="user-name"> <span>Welcome</span>  <%=user.fullname%> 🙏🙏 </h4>
+            <h3>Sort By</h3>
+            <select id="sort-options">
+                <option value="default">Default</option>
+                <option value="price-low-high">Price: Low to High</option>
+                <option value="price-high-low">Price: High to Low</option>
+            </select>
+        </div>
+
+        <!-- Product List -->
+        <div class="product-list" id="product-list">
+            <div class="product-card" data-price="25.99">
+                <img src="https://i.pinimg.com/236x/fe/9f/c5/fe9fc53618e47885bf815cb9a2699b75.jpg" alt="Product 1">
+                <h4>Product 1</h4>
+                <p class="price">$25.99 <span class="discount">(-5%)</span></p>
+                <button class="buy-button">Buy Now</button>
+            </div>
+            <div class="product-card" data-price="30.99">
+                <img src="https://i.pinimg.com/736x/35/82/1f/35821f7dadfff28f57ccbb309988a777.jpg" alt="Product 2">
+                <h4>Product 2</h4>
+                <p class="price">$30.99 <span class="discount">(-10%)</span></p>
+                <button class="buy-button">Buy Now</button>
+            </div>
+            <div class="product-card" data-price="10.99">
+                <img src="https://i.pinimg.com/736x/ec/d1/7f/ecd17fdba6ab655286b12ed71372b4d9.jpg" alt="Product 3">
+                <h4>Product 3</h4>
+                <p class="price">$10.99 <span class="discount">(-0%)</span></p>
+                <button class="buy-button">Buy Now</button>
+            </div>
+            <div class="product-card" data-price="20.99">
+                <img src="https://i.pinimg.com/236x/30/22/d0/3022d0a35fadf21c37ea2ae21364bccb.jpg" alt="Product 4">
+                <h4>Product 4</h4>
+                <p class="price">$20.99 <span class="discount">(-15%)</span></p>
+                <button class="buy-button">Buy Now</button>
+            </div>
+            <div class="product-card" data-price="100.99">
+                <img src="https://i.pinimg.com/236x/02/d3/6f/02d36fc34b5eb85d3e17b94bceeaa30a.jpg" alt="Product 5">
+                <h4>Product 5</h4>
+                <p class="price">$100.99 <span class="discount">(-20%)</span></p>
+                <button class="buy-button">Buy Now</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-nav">
+        <a href="#home" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="#search" class="nav-item">
+            <i class="fas fa-search"></i>
+            <span>Search</span>
+        </a>
+        <a href="#add" class="nav-item">
+            <i class="fas fa-plus-circle"></i>
+            <span>Add</span>
+        </a>
+        <a href="#profile" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+        </a>
+    </div>
+
+    <script>
+        // JavaScript to handle sorting
+        const sortSelect = document.getElementById('sort-options');
+        const productList = document.getElementById('product-list');
+        const products = Array.from(productList.getElementsByClassName('product-card'));
+
+        sortSelect.addEventListener('change', (e) => {
+            const option = e.target.value;
+            let sortedProducts;
+
+            if (option === 'price-low-high') {
+                sortedProducts = products.sort((a, b) => parseFloat(a.dataset.price) - parseFloat(b.dataset.price));
+            } else if (option === 'price-high-low') {
+                sortedProducts = products.sort((a, b) => parseFloat(b.dataset.price) - parseFloat(a.dataset.price));
+            } else {
+                // Default sorting by document order
+                sortedProducts = products.sort((a, b) => a.dataset.price - b.dataset.price); 
+            }
+
+            // Re-render the product list
+            sortedProducts.forEach(product => {
+                productList.appendChild(product); // Append back to the list
+            });
+        });
+    </script>
+     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>
