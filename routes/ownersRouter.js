@@ -24,8 +24,8 @@ if (process.env.NODE_ENV === "development") {
   });
 }
 
-router.get("/", function (req, res) {
-  res.render('login')
+router.get("/admin", function (req, res) {
+  res.render('createProduct')
 });
 
 module.exports = router;

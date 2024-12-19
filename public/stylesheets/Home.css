@@ -246,8 +246,10 @@
   }
   
   .nav-list a:hover {
-    background-color: #555; /* Light grey when hovered */
-    border-radius: 5px;
+    background-color: #000000; /* Light grey when hovered */
+    border-radius: 8px;
+    color: white;
+    transition: all ease-out 0.5s;
   }
   
   /* Mobile-responsive styling */
